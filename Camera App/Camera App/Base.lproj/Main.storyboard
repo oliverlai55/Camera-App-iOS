@@ -18,21 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uY4-4E-ndL">
-                                <rect key="frame" x="20" y="64" width="560" height="492"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKJ-Bp-2nn">
+                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uY4-4E-ndL">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="600"/>
+                                        <animations/>
+                                    </imageView>
+                                </subviews>
                                 <animations/>
-                            </imageView>
+                                <constraints>
+                                    <constraint firstItem="uY4-4E-ndL" firstAttribute="top" secondItem="DKJ-Bp-2nn" secondAttribute="top" id="2E0-xt-Itd"/>
+                                    <constraint firstItem="uY4-4E-ndL" firstAttribute="centerX" secondItem="DKJ-Bp-2nn" secondAttribute="centerX" id="9Zj-tl-69d"/>
+                                    <constraint firstItem="uY4-4E-ndL" firstAttribute="leading" secondItem="DKJ-Bp-2nn" secondAttribute="leading" id="LaD-kJ-jCa"/>
+                                    <constraint firstItem="uY4-4E-ndL" firstAttribute="centerY" secondItem="DKJ-Bp-2nn" secondAttribute="centerY" id="ZeF-gd-oz9"/>
+                                    <constraint firstAttribute="bottom" secondItem="uY4-4E-ndL" secondAttribute="bottom" id="fOx-m3-3wo"/>
+                                    <constraint firstAttribute="trailing" secondItem="uY4-4E-ndL" secondAttribute="trailing" id="l6F-Va-vf9"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="uY4-4E-ndL" secondAttribute="trailing" id="55z-j3-5iU"/>
-                            <constraint firstItem="8tB-7a-XKP" firstAttribute="top" secondItem="uY4-4E-ndL" secondAttribute="bottom" id="KgX-XC-60i"/>
-                            <constraint firstItem="uY4-4E-ndL" firstAttribute="leading" secondItem="FQf-VP-UCD" secondAttribute="leadingMargin" id="QTL-qz-o2H"/>
-                            <constraint firstItem="uY4-4E-ndL" firstAttribute="top" secondItem="xfC-Yo-6xn" secondAttribute="bottom" id="nME-OE-AZq"/>
+                            <constraint firstItem="DKJ-Bp-2nn" firstAttribute="top" secondItem="FQf-VP-UCD" secondAttribute="topMargin" id="7ZK-EO-99F"/>
+                            <constraint firstItem="DKJ-Bp-2nn" firstAttribute="leading" secondItem="FQf-VP-UCD" secondAttribute="leadingMargin" id="8iG-wf-moX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DKJ-Bp-2nn" secondAttribute="trailing" id="BvI-AB-uXQ"/>
+                            <constraint firstItem="8tB-7a-XKP" firstAttribute="top" secondItem="DKJ-Bp-2nn" secondAttribute="bottom" constant="20" id="R6r-48-7lr"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="DKJ-Bp-2nn" secondAttribute="bottom" id="tVT-eS-Atf"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="R6r-48-7lr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems>
+                        <barButtonItem systemItem="action" id="NmL-nJ-KSo">
+                            <connections>
+                                <action selector="actionButtonTouched:" destination="Jxh-jM-WwH" id="SLO-R4-YfM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="9j4-vF-dZb"/>
                         <barButtonItem systemItem="camera" id="AQw-kh-I8G">
                             <connections>
@@ -49,6 +74,7 @@
                     <navigationItem key="navigationItem" id="qKU-zB-bWp"/>
                     <connections>
                         <outlet property="displayImageView" destination="uY4-4E-ndL" id="fn1-c7-Q8y"/>
+                        <outlet property="scrollView" destination="DKJ-Bp-2nn" id="sXe-xi-jef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEO-od-Kmp" userLabel="First Responder" sceneMemberID="firstResponder"/>

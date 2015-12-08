@@ -9,12 +9,36 @@
 import UIKit
 
 class MainViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate, UIScrollViewDelegate {
 
+    private var currentZoom : CGFloat = 1.0
+    
+    func zoomImage(){
+        if self.currentZoom == 1.0 {
+            self.currentZoom = 2.0
+        }
+        else {
+            self.currentZoom = 1.0 }
+        
+        UIView.animateWithDuration(0.5) {[unowned self] in 
+        self.scrollView.minimumZoomScale = self.currentZoom
+        self.scrollView.maximumZoomScale = self.currentZoom
+        self.scrollView.zoomScale = self.currentZoom
+        }
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? { return self.displayImageView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let gesture = UITapGestureRecognizer(target: self, action: "zoomImage")
+        gesture.numberOfTapsRequired = 2
+        self.scrollView.addGestureRecognizer(gesture)
+        
+        self.scrollView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,12 +57,29 @@ UINavigationControllerDelegate {
     }
     */
 
+    @IBAction func actionButtonTouched(sender: AnyObject) {
+        if let image = self.displayImageView.image {
+            //Add code here
+            let activityViewController =
+            UIActivityViewController(activityItems: [image],
+                applicationActivities: nil)
+            
+            activityViewController.excludedActivityTypes = [UIActivityTypeMail]
+            
+            self.presentViewController(activityViewController, animated: true,
+                completion:nil)}
+       
+    }
+    
     @IBAction func cameraButtonTouched(sender: UIBarButtonItem){
        self.displayImagePicker(.Camera)
     }
+    
     @IBAction func libraryButtonTouched(sender: UIBarButtonItem) {
         self.displayImagePicker(.PhotoLibrary)
     }
+    
+    @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var displayImageView: UIImageView!
     
