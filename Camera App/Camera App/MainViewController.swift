@@ -9,7 +9,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UIScrollViewDelegate {
+UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     private var currentZoom : CGFloat = 1.0
     
@@ -32,13 +32,14 @@ UINavigationControllerDelegate, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.imageStore = [UIImage]()
 
         // Do any additional setup after loading the view.
         let gesture = UITapGestureRecognizer(target: self, action: "zoomImage")
         gesture.numberOfTapsRequired = 2
         self.scrollView.addGestureRecognizer(gesture)
-        
         self.scrollView.delegate = self
+        previewCollectionView.alpha = 0.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +86,9 @@ UINavigationControllerDelegate, UIScrollViewDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage,
         editingInfo: [String : AnyObject]?) {
+            self.imageStore.insert(image, atIndex: 0)
+            self.previewCollectionView.reloadData()
+            previewCollectionView.alpha = 1.0
             self.displayImageView.image = image
             picker.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -101,5 +105,29 @@ UINavigationControllerDelegate, UIScrollViewDelegate {
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    @IBOutlet var previewCollectionView: UICollectionView!
     
+    private var imageStore : [UIImage]!
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        let image = self.imageStore![indexPath.item]
+        
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PreviewCellReuseID", forIndexPath: indexPath) as? PreviewCollectionViewCell {
+            
+            cell.previewImageView.image = image
+            
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.imageStore.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+            let image = self.imageStore[indexPath.item]
+            self.displayImageView.image = image
+    }
 }

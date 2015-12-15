@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKJ-Bp-2nn">
-                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <rect key="frame" x="20" y="0.0" width="560" height="386"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uY4-4E-ndL">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="386"/>
                                         <animations/>
                                     </imageView>
                                 </subviews>
@@ -36,18 +36,71 @@
                                     <constraint firstAttribute="trailing" secondItem="uY4-4E-ndL" secondAttribute="trailing" id="l6F-Va-vf9"/>
                                 </constraints>
                             </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-EV-THZ">
+                                <rect key="frame" x="20" y="386" width="560" height="170"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="6SS-SG-kxQ"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DbM-sJ-akW">
+                                    <size key="itemSize" width="128" height="169"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PreviewCellReuseID" id="BbW-Sn-0DY" customClass="PreviewCollectionViewCell" customModule="Camera_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="169.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="169.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CK9-BH-pqq">
+                                                    <rect key="frame" x="0.0" y="8" width="128" height="128"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="128" id="fUu-Sq-ypn"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="CK9-BH-pqq" firstAttribute="centerX" secondItem="BbW-Sn-0DY" secondAttribute="centerX" id="2rQ-tX-C5k"/>
+                                            <constraint firstItem="CK9-BH-pqq" firstAttribute="width" secondItem="BbW-Sn-0DY" secondAttribute="width" id="SDu-Z6-5uh"/>
+                                            <constraint firstItem="CK9-BH-pqq" firstAttribute="top" secondItem="BbW-Sn-0DY" secondAttribute="topMargin" id="qS0-Nw-Lhv"/>
+                                        </constraints>
+                                        <size key="customSize" width="128" height="169.5"/>
+                                        <connections>
+                                            <outlet property="previewImageView" destination="CK9-BH-pqq" id="Axo-of-SYb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Jxh-jM-WwH" id="UYz-lC-Wed"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bFF-EV-THZ" firstAttribute="trailing" secondItem="uY4-4E-ndL" secondAttribute="trailing" id="7He-bp-qqK"/>
                             <constraint firstItem="DKJ-Bp-2nn" firstAttribute="top" secondItem="FQf-VP-UCD" secondAttribute="topMargin" id="7ZK-EO-99F"/>
                             <constraint firstItem="DKJ-Bp-2nn" firstAttribute="leading" secondItem="FQf-VP-UCD" secondAttribute="leadingMargin" id="8iG-wf-moX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DKJ-Bp-2nn" secondAttribute="trailing" id="BvI-AB-uXQ"/>
+                            <constraint firstItem="bFF-EV-THZ" firstAttribute="top" secondItem="DKJ-Bp-2nn" secondAttribute="bottom" id="GhN-Om-kiO"/>
                             <constraint firstItem="8tB-7a-XKP" firstAttribute="top" secondItem="DKJ-Bp-2nn" secondAttribute="bottom" constant="20" id="R6r-48-7lr"/>
+                            <constraint firstItem="bFF-EV-THZ" firstAttribute="leading" secondItem="uY4-4E-ndL" secondAttribute="leading" id="ZoS-2s-de9"/>
+                            <constraint firstItem="8tB-7a-XKP" firstAttribute="top" secondItem="bFF-EV-THZ" secondAttribute="bottom" id="jUD-D2-joY"/>
                             <constraint firstAttribute="bottomMargin" secondItem="DKJ-Bp-2nn" secondAttribute="bottom" id="tVT-eS-Atf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="tVT-eS-Atf"/>
                                 <exclude reference="R6r-48-7lr"/>
                             </mask>
                         </variation>
@@ -74,6 +127,7 @@
                     <navigationItem key="navigationItem" id="qKU-zB-bWp"/>
                     <connections>
                         <outlet property="displayImageView" destination="uY4-4E-ndL" id="fn1-c7-Q8y"/>
+                        <outlet property="previewCollectionView" destination="bFF-EV-THZ" id="y4a-cv-vRQ"/>
                         <outlet property="scrollView" destination="DKJ-Bp-2nn" id="sXe-xi-jef"/>
                     </connections>
                 </viewController>
