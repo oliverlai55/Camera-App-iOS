@@ -48,15 +48,15 @@ UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender:
+        AnyObject?) {
+            if segue.identifier == "FilterSegue" {
+                if let vc : FilterViewController =
+                    segue.destinationViewController as? FilterViewController {
+                        vc.sourceImage = self.displayImageView.image
+                }
+            }
     }
-    */
 
     @IBAction func actionButtonTouched(sender: AnyObject) {
         if let image = self.displayImageView.image {
@@ -83,6 +83,17 @@ UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var displayImageView: UIImageView!
+    
+    //Unwind Segue
+    @IBAction func didSelectFilter(segue: UIStoryboardSegue) {
+        if segue.identifier == "FilterSelectedSegue" {
+            if let source = segue.sourceViewController as?
+                FilterViewController,
+                let image = source.filteredImage {
+                    self.displayImageView.image = image
+            }
+        }
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage,
         editingInfo: [String : AnyObject]?) {

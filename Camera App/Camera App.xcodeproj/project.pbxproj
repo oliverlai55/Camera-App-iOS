@@ -12,6 +12,9 @@
 		6D1C23D01C0FB85D00CB1A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C23CF1C0FB85D00CB1A9A /* Assets.xcassets */; };
 		6D1C23D31C0FB85D00CB1A9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C23D11C0FB85D00CB1A9A /* LaunchScreen.storyboard */; };
 		6D1C23DD1C0FBD7D00CB1A9A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C23DC1C0FBD7D00CB1A9A /* MainViewController.swift */; };
+		6DA66C0E1C4DB2C400E65A06 /* ImageFilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA66C0D1C4DB2C400E65A06 /* ImageFilterManager.swift */; };
+		6DA66C101C4DB8D800E65A06 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA66C0F1C4DB8D800E65A06 /* FilterTableViewCell.swift */; };
+		6DA66C121C4DB9BC00E65A06 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA66C111C4DB9BC00E65A06 /* FilterViewController.swift */; };
 		6DF988A51C1F94000094D9ED /* PreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF988A41C1F94000094D9ED /* PreviewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,9 @@
 		6D1C23D21C0FB85D00CB1A9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D1C23D41C0FB85D00CB1A9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D1C23DC1C0FBD7D00CB1A9A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6DA66C0D1C4DB2C400E65A06 /* ImageFilterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFilterManager.swift; sourceTree = "<group>"; };
+		6DA66C0F1C4DB8D800E65A06 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		6DA66C111C4DB9BC00E65A06 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		6DF988A41C1F94000094D9ED /* PreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,10 +65,13 @@
 				6D1C23C81C0FB85D00CB1A9A /* AppDelegate.swift */,
 				6D1C23CC1C0FB85D00CB1A9A /* Main.storyboard */,
 				6D1C23CF1C0FB85D00CB1A9A /* Assets.xcassets */,
+				6DA66C0D1C4DB2C400E65A06 /* ImageFilterManager.swift */,
 				6D1C23D11C0FB85D00CB1A9A /* LaunchScreen.storyboard */,
 				6D1C23D41C0FB85D00CB1A9A /* Info.plist */,
 				6D1C23DC1C0FBD7D00CB1A9A /* MainViewController.swift */,
 				6DF988A41C1F94000094D9ED /* PreviewCollectionViewCell.swift */,
+				6DA66C0F1C4DB8D800E65A06 /* FilterTableViewCell.swift */,
+				6DA66C111C4DB9BC00E65A06 /* FilterViewController.swift */,
 			);
 			path = "Camera App";
 			sourceTree = "<group>";
@@ -139,9 +148,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DA66C121C4DB9BC00E65A06 /* FilterViewController.swift in Sources */,
 				6DF988A51C1F94000094D9ED /* PreviewCollectionViewCell.swift in Sources */,
 				6D1C23C91C0FB85D00CB1A9A /* AppDelegate.swift in Sources */,
 				6D1C23DD1C0FBD7D00CB1A9A /* MainViewController.swift in Sources */,
+				6DA66C0E1C4DB2C400E65A06 /* ImageFilterManager.swift in Sources */,
+				6DA66C101C4DB8D800E65A06 /* FilterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
