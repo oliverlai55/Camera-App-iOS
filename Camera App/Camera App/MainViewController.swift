@@ -7,10 +7,26 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FBSDKShareKit
+import FBSDKCoreKit
 
 class MainViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
-
+UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, FBSDKSharingDelegate {
+    
+    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject: AnyObject]) {
+        print(results)
+    }
+    
+    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+        print("sharer NSError")
+        print(error.description)
+    }
+    
+    func sharerDidCancel(sharer: FBSDKSharing!) {
+        print("sharerDidCancel")
+    }
+    
     private var currentZoom : CGFloat = 1.0
     
     func zoomImage(){
@@ -60,15 +76,11 @@ UINavigationControllerDelegate, UIScrollViewDelegate, UICollectionViewDataSource
 
     @IBAction func actionButtonTouched(sender: AnyObject) {
         if let image = self.displayImageView.image {
-            //Add code here
-            let activityViewController =
-            UIActivityViewController(activityItems: [image],
-                applicationActivities: nil)
-            
-            activityViewController.excludedActivityTypes = [UIActivityTypeMail]
-            
-            self.presentViewController(activityViewController, animated: true,
-                completion:nil)}
+            let sharePhoto = FBSDKSharePhoto(image: image, userGenerated: true)
+            let content = FBSDKSharePhotoContent()
+            content.photos = [sharePhoto]
+            FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: self)
+        }
        
     }
     
